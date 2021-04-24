@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import "./Form.css";
 
 const defaultProps = {
-  style: { width: "55%",marginTop: "20px" },
+  style: { width: "55%", marginTop: "20px" },
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -18,14 +18,12 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "10px",
     marginBottom: "10px",
     borderRadius: "10px",
-    paddingTop:"5px",
-    paddingLeft: "5px"
+    paddingTop: "5px",
+    paddingLeft: "5px",
   },
 }));
 
-
-
-const Form = ({ clicked, setClicked }) => {
+const Form = ({ clicked, setClicked, Task, setTasks_array, Tasks_array }) => {
   const classes = useStyles();
 
   return (
@@ -43,8 +41,18 @@ const Form = ({ clicked, setClicked }) => {
               id="standard-basic"
               label=""
               placeholder="Enter Task"
-              size= "small"
+              size="small"
               InputProps={{ disableUnderline: true }}
+              onChange={(event) => {
+                if (
+                  event.target.value.substr(event.target.value.length - 1) ===
+                  "."
+                ) {
+                  Task = event.target.value;
+                  setTasks_array( Tasks_array => Tasks_array.concat(Task));
+                  setClicked(false);
+                }
+              }}
             />
           </Grid>
         </Box>

@@ -26,6 +26,9 @@ const InputForm = () => {
   const classes = useStyles();
 
   const [clicked, setClicked] = useState(false);
+  var Task = "";
+  const [Tasks_array, setTasks_array] = useState([]);
+  {console.log(Tasks_array)}
 
   return (
     <div className="input-container">
@@ -43,9 +46,9 @@ const InputForm = () => {
         </div>
       </Grid>
       {(() => {
-        if (clicked) {
+        if (clicked && Task.length === 0) {
           return (
-            <Form clicked={clicked} setClicked={setClicked}/>
+            <Form clicked={clicked} setClicked={setClicked} Task={Task} setTasks_array={setTasks_array} Tasks_array={Tasks_array}/>
           )
         }
       })()}
