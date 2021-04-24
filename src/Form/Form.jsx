@@ -6,25 +6,17 @@ import { makeStyles } from "@material-ui/core/styles";
 import "./Form.css";
 
 const defaultProps = {
-  style: { width: "75%", height: "5rem", marginTop: "20px" },
+  style: { width: "55%",marginTop: "20px" },
 };
 
 const useStyles = makeStyles((theme) => ({
-  underline: {
-    "&&&:before": {
-      borderBottom: "none"
-    },
-    "&&:after": {
-      borderBottom: "none"
-    }
-  },
   input: {
     color: "white",
     backgroundColor: "white",
     borderWidth: "0",
-    width: "55%",
-    height: "25px%",
+    width: "90%",
     marginTop: "10px",
+    marginBottom: "10px",
     borderRadius: "10px",
     paddingTop:"5px",
     paddingLeft: "5px"
