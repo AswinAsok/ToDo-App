@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     backgroundColor: "white",
     borderWidth: "0",
-    width: "90%",
+    width: "92%",
     marginTop: "10px",
     marginBottom: "10px",
     borderRadius: "10px",

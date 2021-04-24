@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import "./InputForm.css";
 import Divider from '@material-ui/core/Divider';
 import Form from "../Form/Form";
+import Display from "../Display/Display";
 
 const useStyles = makeStyles((theme) => ({
   buttonadd: {
@@ -54,6 +55,8 @@ const InputForm = () => {
       })()}
       <br></br>
       <Divider />
+      <br></br>
+      <Display Tasks_array={Tasks_array} setTasks_array={setTasks_array}/>
     </div>
   );
 };
