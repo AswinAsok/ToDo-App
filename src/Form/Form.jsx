@@ -6,12 +6,32 @@ import { makeStyles } from "@material-ui/core/styles";
 import "./Form.css";
 
 const defaultProps = {
-  style: { width: "90%", height: "5rem", marginTop: "20px" },
+  style: { width: "75%", height: "5rem", marginTop: "20px" },
 };
 
 const useStyles = makeStyles((theme) => ({
-  
+  underline: {
+    "&&&:before": {
+      borderBottom: "none"
+    },
+    "&&:after": {
+      borderBottom: "none"
+    }
+  },
+  input: {
+    color: "white",
+    backgroundColor: "white",
+    borderWidth: "0",
+    width: "55%",
+    height: "25px%",
+    marginTop: "10px",
+    borderRadius: "10px",
+    paddingTop:"5px",
+    paddingLeft: "5px"
+  },
 }));
+
+
 
 const Form = ({ clicked, setClicked }) => {
   const classes = useStyles();
@@ -26,7 +46,14 @@ const Form = ({ clicked, setClicked }) => {
             justify="center"
             alignItems="center"
           >
-           
+            <TextField
+              className={classes.input}
+              id="standard-basic"
+              label=""
+              placeholder="Enter Task"
+              size= "small"
+              InputProps={{ disableUnderline: true }}
+            />
           </Grid>
         </Box>
       </Grid>
