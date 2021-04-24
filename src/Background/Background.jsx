@@ -1,6 +1,7 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
+import InputForm from '../InputForm/InputForm';
 
 const defaultProps = {
     bgcolor: "background.paper",
@@ -20,6 +21,7 @@ const defaultProps = {
       <div display="flex" justifyContent="center" className="main-container">
         <Grid container direction="row" justify="center" alignItems="center">
           <Box boxShadow={3} borderRadius={16} {...defaultProps}>
+            <InputForm />
           </Box>
         </Grid>
       </div>
