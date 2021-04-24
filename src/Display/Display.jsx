@@ -10,7 +10,7 @@ const defaultProps = {
 
 
 
-function Display({ Tasks_array, setTasks_array }) {
+function Display({ Tasks_array, Task ,key, setTasks_array }) {
   return (
     <div>
       {(() => {
@@ -28,7 +28,7 @@ function Display({ Tasks_array, setTasks_array }) {
                   borderRadius={16}
                   {...defaultProps}
                 >
-                    
+                    {Task}
                 </Box>
               </Grid>
             </div>

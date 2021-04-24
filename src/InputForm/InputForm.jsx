@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import "./InputForm.css";
-import Divider from '@material-ui/core/Divider';
+import Divider from "@material-ui/core/Divider";
 import Form from "../Form/Form";
 import Display from "../Display/Display";
 
@@ -29,7 +29,9 @@ const InputForm = () => {
   const [clicked, setClicked] = useState(false);
   var Task = "";
   const [Tasks_array, setTasks_array] = useState([]);
-  {console.log(Tasks_array)}
+  {
+    console.log(Tasks_array);
+  }
 
   return (
     <div className="input-container">
@@ -49,14 +51,30 @@ const InputForm = () => {
       {(() => {
         if (clicked && Task.length === 0) {
           return (
-            <Form clicked={clicked} setClicked={setClicked} Task={Task} setTasks_array={setTasks_array} Tasks_array={Tasks_array}/>
-          )
+            <Form
+              clicked={clicked}
+              setClicked={setClicked}
+              Task={Task}
+              setTasks_array={setTasks_array}
+              Tasks_array={Tasks_array}
+            />
+          );
         }
       })()}
       <br></br>
       <Divider />
       <br></br>
-      <Display Tasks_array={Tasks_array} setTasks_array={setTasks_array}/>
+      
+      {Tasks_array.map((Task, index) => {
+        return (
+          <Display
+            Tasks_array={Tasks_array}
+            Task = {Task}
+            key={index}
+            setTasks_array={setTasks_array}
+          />
+        );
+      })}
     </div>
   );
 };
