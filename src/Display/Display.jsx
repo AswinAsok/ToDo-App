@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const defaultProps = {
   m: 1,
-  style: { width: "18rem", height: "5rem" },
+  style: { width: "18rem"},
 };
 
 const useStyles = makeStyles((theme) => ({

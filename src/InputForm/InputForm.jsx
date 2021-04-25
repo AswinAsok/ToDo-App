@@ -33,11 +33,11 @@ const InputForm = () => {
   const [edit, setEdit] = useState(false);
   const [editstr, setEditstr] = useState("");
   const [edited, setEdited] = useState(false);
-  const [addedit, setAddedit] = useState(false);
 
   const update = () => {
-    if(addedit && edited && edit && sindex !== -1 && editstr.length>0){
+    if(edited && edit && sindex !== -1 && editstr.length>0){
       Tasks_array[sindex] = editstr;
+      console.log("Hello123")
       setEditstr("");
       setEdit(false);
       setSIndex(-1);
