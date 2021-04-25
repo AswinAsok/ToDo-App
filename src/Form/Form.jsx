@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "5px",
     paddingTop: "5px",
     paddingLeft: "5px",
+    paddingRight: "5px",
   },
   multilineColor: {
     color: "#FFFAFF",
@@ -30,7 +31,6 @@ const Form = ({ clicked, setClicked, Task, setTask, setTasks_array, Tasks_array 
 
   return (
     <div>
-      {console.log("Form is Loaded")}
       <Grid container direction="column" justify="center" alignItems="center">
         <TextField
           InputProps={{

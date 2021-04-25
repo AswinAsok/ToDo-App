@@ -29,11 +29,7 @@ const InputForm = () => {
   const [clicked, setClicked] = useState(false);
   const [Task, setTask] = useState("");
   const [Tasks_array, setTasks_array] = useState([]);
-  {
-    console.log(Tasks_array);
-    console.log(clicked);
-  }
-
+ 
   return (
     <div className="input-container">
       <Grid container direction="column" justify="center" alignItems="center">
@@ -62,7 +58,7 @@ const InputForm = () => {
             />
           );
         }
-        {console.log(Task.length)}
+      
         if (!clicked && Task.length > 0) {
           setTasks_array((Tasks_array) => Tasks_array.concat(Task));
           setTask("");
