@@ -87,6 +87,11 @@ function Display({
                       variant="contained"
                       className={classes.buttondelete}
                       onClick={() => {
+
+                        if(Tasks_array.length === 1){
+                          localStorage.removeItem("Todos")
+                        }
+
                         setTasks_array(
                           Tasks_array.filter(function (task) {
                             return task !== Tasks_array[index];

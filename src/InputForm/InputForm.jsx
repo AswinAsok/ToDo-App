@@ -36,8 +36,10 @@ const InputForm = () => {
 
 
   useEffect(() => {
+    var check = false
     if (localStorage.getItem("Todos") === null) {
       localStorage.setItem("Todos", JSON.stringify(Tasks_array));
+      check = true;
     } else if (
       Tasks_array.length === 0 &&
       JSON.parse(localStorage.getItem("Todos")).length > 0
