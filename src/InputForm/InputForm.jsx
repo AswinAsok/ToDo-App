@@ -34,6 +34,16 @@ const InputForm = () => {
   const [editstr, setEditstr] = useState("");
   const [edited, setEdited] = useState(false);
   const [addedit, setAddedit] = useState(false);
+
+  const update = () => {
+    if(addedit && edited && edit && sindex !== -1 && editstr.length>0){
+      Tasks_array[sindex] = editstr;
+      setEditstr("");
+      setEdit(false);
+      setSIndex(-1);
+      setClicked(false);
+    }
+  }
  
   return (
     <div className="input-container">
@@ -42,8 +52,8 @@ const InputForm = () => {
           <Button
             onClick={() => {
               setClicked(!clicked);
-              if(edited){
-                setAddedit(true)
+              if(edited){ 
+                update();
               }
             }}
             variant="contained"
@@ -75,21 +85,6 @@ const InputForm = () => {
         if (!clicked && Task.length > 0) {
           setTasks_array((Tasks_array) => Tasks_array.concat(Task));
           setTask("");
-        }
-        {
-          console.log("-----------------------")
-          console.log(addedit)
-          console.log(edited) 
-          console.log(edit)
-          console.log(sindex !== -1)
-          console.log(editstr.length>0)
-        }
-
-        if(addedit && edited && edit && sindex !== -1 && editstr.length>0){
-          Tasks_array[sindex] = editstr;
-          setEditstr("");
-          setEdit(false);
-          setSIndex(-1);
         }
 
         if(edit && sindex!== -1){
