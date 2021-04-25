@@ -40,9 +40,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Display({ Tasks_array, Task, index,setSIndex,sindex,edit, setEdit, setTasks_array }) {
+function Display({
+  Tasks_array,
+  Task,
+  index,
+  setSIndex,
+  sindex,
+  edit,
+  setEdit,
+  setTasks_array,
+
+  editstr,
+  setEditstr,
+
+  edited, 
+  setEdited
+}) {
   const classes = useStyles();
-  
 
   return (
     <div>
@@ -86,6 +100,7 @@ function Display({ Tasks_array, Task, index,setSIndex,sindex,edit, setEdit, setT
                       onClick={() => {
                         setEdit(true);
                         setSIndex(index);
+                        setEditstr(Tasks_array[index])
                       }}
                       variant="contained"
                       className={classes.buttonedit}

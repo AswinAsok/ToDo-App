@@ -26,7 +26,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Form = ({ setTask, setTasks_array, Tasks_array, sindex, setSIndex }) => {
+const Form = ({
+  setTask,
+  setTasks_array,
+  Tasks_array,
+  sindex,
+  setSIndex,
+
+  editstr,
+  setEditstr,
+
+  setEdited,
+}) => {
   const classes = useStyles();
 
   return (
@@ -57,7 +68,7 @@ const Form = ({ setTask, setTasks_array, Tasks_array, sindex, setSIndex }) => {
               </Grid>
             </div>
           );
-        }else if(sindex > -1) {
+        } else if (sindex > -1) {
           return (
             <div>
               <Grid
@@ -73,8 +84,12 @@ const Form = ({ setTask, setTasks_array, Tasks_array, sindex, setSIndex }) => {
                   }}
                   className={classes.input}
                   id="standard-basic"
-                  value={Tasks_array[sindex]}
+                  value={editstr}
                   size="small"
+                  onChange={(event) => {
+                    setEditstr(event.target.value)
+                    setEdited(true);
+                  }}
                 />
               </Grid>
             </div>

@@ -31,6 +31,9 @@ const InputForm = () => {
   const [Tasks_array, setTasks_array] = useState([]);
   const [sindex, setSIndex] = useState(-1);
   const [edit, setEdit] = useState(false);
+  const [editstr, setEditstr] = useState("");
+  const [edited, setEdited] = useState(false);
+  const [addedit, setAddedit] = useState(false);
  
   return (
     <div className="input-container">
@@ -39,6 +42,9 @@ const InputForm = () => {
           <Button
             onClick={() => {
               setClicked(!clicked);
+              if(edited){
+                setAddedit(true)
+              }
             }}
             variant="contained"
             className={classes.buttonadd}
@@ -54,8 +60,14 @@ const InputForm = () => {
               setTask={setTask}
               setTasks_array={setTasks_array}
               Tasks_array={Tasks_array}
+
               sindex={sindex}
               setSIndex={setSIndex}
+
+              editstr={editstr}
+              setEditstr={setEditstr}
+
+              setEdited={setEdited}
             />
           );
         }
@@ -64,6 +76,21 @@ const InputForm = () => {
           setTasks_array((Tasks_array) => Tasks_array.concat(Task));
           setTask("");
         }
+        {
+          console.log("-----------------------")
+          console.log(addedit)
+          console.log(edited) 
+          console.log(edit)
+          console.log(sindex !== -1)
+          console.log(editstr.length>0)
+        }
+
+        if(addedit && edited && edit && sindex !== -1 && editstr.length>0){
+          Tasks_array[sindex] = editstr;
+          setEditstr("");
+          setEdit(false);
+          setSIndex(-1);
+        }
 
         if(edit && sindex!== -1){
           return (
@@ -71,8 +98,14 @@ const InputForm = () => {
               setTask={setTask}
               setTasks_array={setTasks_array}
               Tasks_array={Tasks_array}
+
               sindex={sindex}
               setSIndex={setSIndex}
+
+              editstr={editstr}
+              setEditstr={setEditstr}
+
+              setEdited={setEdited}
             />
           );
         }
@@ -93,6 +126,12 @@ const InputForm = () => {
             edit={edit}
             setEdit={setEdit}
             setTasks_array={setTasks_array}
+
+            editstr={editstr}
+            setEditstr={setEditstr}
+
+            edited={edited}
+            setEdited={setEdited}
           />
         );
       })}
