@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Box from "@material-ui/core/Box";
+import React, { useState, useEffect } from "react";
+import { reactLocalStorage } from "reactjs-localstorage";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
@@ -34,17 +34,33 @@ const InputForm = () => {
   const [editstr, setEditstr] = useState("");
   const [edited, setEdited] = useState(false);
 
+  useEffect(() => {
+    if (localStorage.getItem("Todos") === null) {
+      localStorage.setItem("Todos", JSON.stringify(Tasks_array));
+    } else if (
+      localStorage.getItem("Todos") !== null &&
+      Tasks_array.length === 0
+    ) {
+      setTasks_array(JSON.parse(localStorage.getItem("Todos")));
+    } else if (Tasks_array.length === 0) {
+      localStorage.removeItem("Todos");
+    } else {
+      localStorage.removeItem("Todos");
+      localStorage.setItem("Todos", JSON.stringify(Tasks_array));
+    }
+  }, [Tasks_array]);
+
   const update = () => {
-    if(edited && edit && sindex !== -1 && editstr.length>0){
+    if (edited && edit && sindex !== -1 && editstr.length > 0) {
       Tasks_array[sindex] = editstr;
-      console.log("Hello123")
+      console.log("Hello123");
       setEditstr("");
       setEdit(false);
       setSIndex(-1);
       setClicked(false);
     }
-  }
- 
+  };
+
   return (
     <div className="input-container">
       <Grid container direction="column" justify="center" alignItems="center">
@@ -52,7 +68,7 @@ const InputForm = () => {
           <Button
             onClick={() => {
               setClicked(!clicked);
-              if(edited){ 
+              if (edited) {
                 update();
               }
             }}
@@ -70,36 +86,30 @@ const InputForm = () => {
               setTask={setTask}
               setTasks_array={setTasks_array}
               Tasks_array={Tasks_array}
-
               sindex={sindex}
               setSIndex={setSIndex}
-
               editstr={editstr}
               setEditstr={setEditstr}
-
               setEdited={setEdited}
             />
           );
         }
-      
+
         if (!clicked && Task.length > 0) {
           setTasks_array((Tasks_array) => Tasks_array.concat(Task));
           setTask("");
         }
 
-        if(edit && sindex!== -1){
+        if (edit && sindex !== -1) {
           return (
             <Form
               setTask={setTask}
               setTasks_array={setTasks_array}
               Tasks_array={Tasks_array}
-
               sindex={sindex}
               setSIndex={setSIndex}
-
               editstr={editstr}
               setEditstr={setEditstr}
-
               setEdited={setEdited}
             />
           );
@@ -108,7 +118,6 @@ const InputForm = () => {
 
       <br></br>
       <Divider />
-
 
       {Tasks_array.map((Task, index) => {
         return (
@@ -121,10 +130,8 @@ const InputForm = () => {
             edit={edit}
             setEdit={setEdit}
             setTasks_array={setTasks_array}
-
             editstr={editstr}
             setEditstr={setEditstr}
-
             edited={edited}
             setEdited={setEdited}
           />
