@@ -66,7 +66,6 @@ const InputForm = () => {
       })()}
       <br></br>
       <Divider />
-      <br></br>
 
       {Tasks_array.map((Task, index) => {
         return (
