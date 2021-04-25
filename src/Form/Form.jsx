@@ -26,27 +26,61 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Form = ({ clicked, setClicked, Task, setTask, setTasks_array, Tasks_array }) => {
+const Form = ({ setTask, setTasks_array, Tasks_array, sindex, setSIndex }) => {
   const classes = useStyles();
 
   return (
     <div>
-      <Grid container direction="column" justify="center" alignItems="center">
-        <TextField
-          InputProps={{
-            className: classes.multilineColor,
-            disableUnderline: true
-          }}
-          className={classes.input}
-          id="standard-basic"
-          placeholder="Enter Task"
-          size="small"
-          
-          onChange={(event) => {
-            setTask(event.target.value);
-          }}
-        />
-      </Grid>
+      {(() => {
+        if (sindex === -1) {
+          return (
+            <div>
+              <Grid
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
+              >
+                <TextField
+                  InputProps={{
+                    className: classes.multilineColor,
+                    disableUnderline: true,
+                  }}
+                  className={classes.input}
+                  id="standard-basic"
+                  placeholder="Enter Task"
+                  size="small"
+                  onChange={(event) => {
+                    setTask(event.target.value);
+                  }}
+                />
+              </Grid>
+            </div>
+          );
+        }else if(sindex > -1) {
+          return (
+            <div>
+              <Grid
+                container
+                direction="column"
+                justify="center"
+                alignItems="center"
+              >
+                <TextField
+                  InputProps={{
+                    className: classes.multilineColor,
+                    disableUnderline: true,
+                  }}
+                  className={classes.input}
+                  id="standard-basic"
+                  value={Tasks_array[sindex]}
+                  size="small"
+                />
+              </Grid>
+            </div>
+          );
+        }
+      })()}
     </div>
   );
 };

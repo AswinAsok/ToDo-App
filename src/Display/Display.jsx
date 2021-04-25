@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Display.css";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
@@ -40,8 +40,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Display({ Tasks_array, Task, index, setTasks_array }) {
+function Display({ Tasks_array, Task, index,setSIndex,sindex,edit, setEdit, setTasks_array }) {
   const classes = useStyles();
+  
 
   return (
     <div>
@@ -70,16 +71,25 @@ function Display({ Tasks_array, Task, index, setTasks_array }) {
                       variant="contained"
                       className={classes.buttondelete}
                       onClick={() => {
-                        setTasks_array(Tasks_array.filter(function(task){
-                          return task !== Tasks_array.[index]
-                        }))
+                        setTasks_array(
+                          Tasks_array.filter(function (task) {
+                            return task !== Tasks_array[index];
+                          })
+                        );
                       }}
                     >
                       Delete
                     </Button>
                   </div>
                   <div>
-                    <Button variant="contained" className={classes.buttonedit}>
+                    <Button
+                      onClick={() => {
+                        setEdit(true);
+                        setSIndex(index);
+                      }}
+                      variant="contained"
+                      className={classes.buttonedit}
+                    >
                       Edit
                     </Button>
                   </div>

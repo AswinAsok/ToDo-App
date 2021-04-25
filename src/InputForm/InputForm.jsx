@@ -29,6 +29,8 @@ const InputForm = () => {
   const [clicked, setClicked] = useState(false);
   const [Task, setTask] = useState("");
   const [Tasks_array, setTasks_array] = useState([]);
+  const [sindex, setSIndex] = useState(-1);
+  const [edit, setEdit] = useState(false);
  
   return (
     <div className="input-container">
@@ -49,12 +51,11 @@ const InputForm = () => {
         if (clicked) {
           return (
             <Form
-              clicked={clicked}
-              setClicked={setClicked}
-              Task={Task}
               setTask={setTask}
               setTasks_array={setTasks_array}
               Tasks_array={Tasks_array}
+              sindex={sindex}
+              setSIndex={setSIndex}
             />
           );
         }
@@ -63,7 +64,20 @@ const InputForm = () => {
           setTasks_array((Tasks_array) => Tasks_array.concat(Task));
           setTask("");
         }
+
+        if(edit && sindex!== -1){
+          return (
+            <Form
+              setTask={setTask}
+              setTasks_array={setTasks_array}
+              Tasks_array={Tasks_array}
+              sindex={sindex}
+              setSIndex={setSIndex}
+            />
+          );
+        }
       })()}
+
       <br></br>
       <Divider />
 
@@ -74,6 +88,10 @@ const InputForm = () => {
             Tasks_array={Tasks_array}
             Task={Task}
             index={index}
+            setSIndex={setSIndex}
+            sindex={index}
+            edit={edit}
+            setEdit={setEdit}
             setTasks_array={setTasks_array}
           />
         );
