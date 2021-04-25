@@ -11,15 +11,17 @@ const defaultProps = {
 
 const useStyles = makeStyles((theme) => ({
   input: {
-    color: "white",
-    backgroundColor: "white",
+    backgroundColor: "#30BCED",
     borderWidth: "0",
-    width: "92%",
-    marginTop: "10px",
+    width: "60%",
+    marginTop: "20px",
     marginBottom: "10px",
-    borderRadius: "10px",
+    borderRadius: "5px",
     paddingTop: "5px",
     paddingLeft: "5px",
+  },
+  multilineColor: {
+    color: "#FFFAFF",
   },
 }));
 
@@ -29,33 +31,25 @@ const Form = ({ clicked, setClicked, Task, setTasks_array, Tasks_array }) => {
   return (
     <div>
       <Grid container direction="column" justify="center" alignItems="center">
-        <Box className="form-box" borderRadius={16} {...defaultProps}>
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-          >
-            <TextField
-              className={classes.input}
-              id="standard-basic"
-              label=""
-              placeholder="Enter Task"
-              size="small"
-              InputProps={{ disableUnderline: true }}
-              onChange={(event) => {
-                if (
-                  event.target.value.substr(event.target.value.length - 1) ===
-                  "."
-                ) {
-                  Task = event.target.value;
-                  setTasks_array( Tasks_array => Tasks_array.concat(Task));
-                  setClicked(false);
-                }
-              }}
-            />
-          </Grid>
-        </Box>
+        <TextField
+          InputProps={{
+            className: classes.multilineColor,
+            disableUnderline: true
+          }}
+          className={classes.input}
+          id="standard-basic"
+          placeholder="Enter Task"
+          size="small"
+          onChange={(event) => {
+            if (
+              event.target.value.substr(event.target.value.length - 1) === "."
+            ) {
+              Task = event.target.value;
+              setTasks_array((Tasks_array) => Tasks_array.concat(Task));
+              setClicked(false);
+            }
+          }}
+        />
       </Grid>
     </div>
   );

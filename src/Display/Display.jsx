@@ -25,7 +25,7 @@ function Display({ Tasks_array, Task ,key, setTasks_array }) {
               >
                 <Box
                   className="display-box"
-                  borderRadius={16}
+                  borderRadius={9}
                   {...defaultProps}
                 >
                     {Task}
