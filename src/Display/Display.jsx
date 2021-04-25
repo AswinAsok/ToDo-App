@@ -5,12 +5,10 @@ import Box from "@material-ui/core/Box";
 
 const defaultProps = {
   m: 1,
-  style: { width: "5rem", height: "5rem" },
+  style: { width: "18rem", height: "5rem" },
 };
 
-
-
-function Display({ Tasks_array, Task ,key, setTasks_array }) {
+function Display({ Tasks_array, Task, key, setTasks_array }) {
   return (
     <div>
       {(() => {
@@ -23,12 +21,11 @@ function Display({ Tasks_array, Task ,key, setTasks_array }) {
                 justify="center"
                 alignItems="center"
               >
-                <Box
-                  className="display-box"
-                  borderRadius={9}
-                  {...defaultProps}
-                >
-                    {Task}
+                <Box className="display-box" borderRadius={9} {...defaultProps}>
+                  <div className="box-elements">
+                    {Task.substring(0, Task.length - 1)}
+                    {key}
+                  </div>
                 </Box>
               </Grid>
             </div>
