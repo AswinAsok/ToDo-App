@@ -8,7 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const defaultProps = {
   m: 1,
-  style: { width: "18rem"},
+  style: { width: "18rem" },
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -53,8 +53,10 @@ function Display({
   editstr,
   setEditstr,
 
-  edited, 
-  setEdited
+  edited,
+  setEdited,
+
+
 }) {
   const classes = useStyles();
 
@@ -90,6 +92,7 @@ function Display({
                             return task !== Tasks_array[index];
                           })
                         );
+                        
                       }}
                     >
                       Delete
@@ -100,7 +103,7 @@ function Display({
                       onClick={() => {
                         setEdit(true);
                         setSIndex(index);
-                        setEditstr(Tasks_array[index])
+                        setEditstr(Tasks_array[index]);
                       }}
                       variant="contained"
                       className={classes.buttonedit}

@@ -34,21 +34,24 @@ const InputForm = () => {
   const [editstr, setEditstr] = useState("");
   const [edited, setEdited] = useState(false);
 
+
   useEffect(() => {
     if (localStorage.getItem("Todos") === null) {
       localStorage.setItem("Todos", JSON.stringify(Tasks_array));
     } else if (
-      localStorage.getItem("Todos") !== null &&
-      Tasks_array.length === 0
+      Tasks_array.length === 0 &&
+      JSON.parse(localStorage.getItem("Todos")).length > 0
     ) {
       setTasks_array(JSON.parse(localStorage.getItem("Todos")));
-    } else if (Tasks_array.length === 0) {
-      localStorage.removeItem("Todos");
-    } else {
-      localStorage.removeItem("Todos");
+    }
+
+    if(Tasks_array.length > 0){
       localStorage.setItem("Todos", JSON.stringify(Tasks_array));
     }
-  }, [Tasks_array]);
+
+   
+
+  }, [Tasks_array, editstr]);
 
   const update = () => {
     if (edited && edit && sindex !== -1 && editstr.length > 0) {
