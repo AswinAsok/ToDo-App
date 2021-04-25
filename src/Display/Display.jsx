@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Display({ Tasks_array, Task, key, setTasks_array }) {
+function Display({ Tasks_array, Task, index, setTasks_array }) {
   const classes = useStyles();
 
   return (
@@ -69,6 +69,11 @@ function Display({ Tasks_array, Task, key, setTasks_array }) {
                     <Button
                       variant="contained"
                       className={classes.buttondelete}
+                      onClick={() => {
+                        setTasks_array(Tasks_array.filter(function(task){
+                          return task !== Tasks_array.[index]
+                        }))
+                      }}
                     >
                       Delete
                     </Button>

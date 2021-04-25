@@ -67,12 +67,13 @@ const InputForm = () => {
       <br></br>
       <Divider />
 
+
       {Tasks_array.map((Task, index) => {
         return (
           <Display
             Tasks_array={Tasks_array}
             Task={Task}
-            key={index}
+            index={index}
             setTasks_array={setTasks_array}
           />
         );
