@@ -25,11 +25,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Form = ({ clicked, setClicked, Task, setTasks_array, Tasks_array }) => {
+const Form = ({ clicked, setClicked, Task, setTask, setTasks_array, Tasks_array }) => {
   const classes = useStyles();
 
   return (
     <div>
+      {console.log("Form is Loaded")}
       <Grid container direction="column" justify="center" alignItems="center">
         <TextField
           InputProps={{
@@ -40,14 +41,9 @@ const Form = ({ clicked, setClicked, Task, setTasks_array, Tasks_array }) => {
           id="standard-basic"
           placeholder="Enter Task"
           size="small"
+          
           onChange={(event) => {
-            if (
-              event.target.value.substr(event.target.value.length - 1) === "."
-            ) {
-              Task = event.target.value;
-              setTasks_array((Tasks_array) => Tasks_array.concat(Task));
-              setClicked(false);
-            }
+            setTask(event.target.value);
           }}
         />
       </Grid>

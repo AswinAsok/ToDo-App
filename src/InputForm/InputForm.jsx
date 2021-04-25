@@ -27,10 +27,11 @@ const InputForm = () => {
   const classes = useStyles();
 
   const [clicked, setClicked] = useState(false);
-  var Task = "";
+  const [Task, setTask] = useState("");
   const [Tasks_array, setTasks_array] = useState([]);
   {
     console.log(Tasks_array);
+    console.log(clicked);
   }
 
   return (
@@ -39,7 +40,7 @@ const InputForm = () => {
         <div>
           <Button
             onClick={() => {
-              setClicked(true);
+              setClicked(!clicked);
             }}
             variant="contained"
             className={classes.buttonadd}
@@ -49,27 +50,33 @@ const InputForm = () => {
         </div>
       </Grid>
       {(() => {
-        if (clicked && Task.length === 0) {
+        if (clicked) {
           return (
             <Form
               clicked={clicked}
               setClicked={setClicked}
               Task={Task}
+              setTask={setTask}
               setTasks_array={setTasks_array}
               Tasks_array={Tasks_array}
             />
           );
         }
+        {console.log(Task.length)}
+        if (!clicked && Task.length > 0) {
+          setTasks_array((Tasks_array) => Tasks_array.concat(Task));
+          setTask("");
+        }
       })()}
       <br></br>
       <Divider />
       <br></br>
-      
+
       {Tasks_array.map((Task, index) => {
         return (
           <Display
             Tasks_array={Tasks_array}
-            Task = {Task}
+            Task={Task}
             key={index}
             setTasks_array={setTasks_array}
           />

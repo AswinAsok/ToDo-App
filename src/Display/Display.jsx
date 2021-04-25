@@ -23,7 +23,7 @@ function Display({ Tasks_array, Task, key, setTasks_array }) {
               >
                 <Box className="display-box" borderRadius={9} {...defaultProps}>
                   <div className="box-elements">
-                    {Task.substring(0, Task.length - 1)}
+                    {Task}
                     {key}
                   </div>
                 </Box>
