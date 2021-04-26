@@ -3,8 +3,13 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import "./Form.css";
-import Fade from '@material-ui/core/Fade';
+import Fade from "@material-ui/core/Fade";
 
 const defaultProps = {
   style: { width: "55%", marginTop: "20px" },
@@ -24,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
   },
   multilineColor: {
     color: "#FFFAFF",
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
   },
 }));
 
@@ -51,7 +60,7 @@ const Form = ({
               <Fade in={clicked}>
                 <Grid
                   container
-                  direction="column"
+                  direction="row"
                   justify="center"
                   alignItems="center"
                 >
@@ -69,7 +78,20 @@ const Form = ({
                       setTask(event.target.value);
                     }}
                   />
+
+                  <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">Priority</InputLabel>
+                    <Select
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                    >
+                      <MenuItem value={10}>High</MenuItem>
+                      <MenuItem value={20}>Medium</MenuItem>
+                      <MenuItem value={30}>Low</MenuItem>
+                    </Select>
+                  </FormControl>
                 </Grid>
+
               </Fade>
             </div>
           );

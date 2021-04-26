@@ -30,6 +30,7 @@ const InputForm = () => {
   const [clicked, setClicked] = useState(false);
   const [Task, setTask] = useState("");
   const [Tasks_array, setTasks_array] = useState([]);
+  const [priority, setPriority] = useState([]);
   const [sindex, setSIndex] = useState(-1);
   const [edit, setEdit] = useState(false);
   const [editstr, setEditstr] = useState("");
