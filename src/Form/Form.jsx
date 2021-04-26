@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import "./Form.css";
+import Fade from '@material-ui/core/Fade';
 
 const defaultProps = {
   style: { width: "55%", marginTop: "20px" },
@@ -37,6 +38,7 @@ const Form = ({
   setEditstr,
 
   setEdited,
+  clicked,
 }) => {
   const classes = useStyles();
 
@@ -46,27 +48,29 @@ const Form = ({
         if (sindex === -1) {
           return (
             <div>
-              <Grid
-                container
-                direction="column"
-                justify="center"
-                alignItems="center"
-              >
-                <TextField
-                  InputProps={{
-                    className: classes.multilineColor,
-                    disableUnderline: true,
-                  }}
-                  className={classes.input}
-                  id="standard-basic"
-                  placeholder="Enter Task"
-                  size="small"
-                  autoComplete='off'
-                  onChange={(event) => {
-                    setTask(event.target.value);
-                  }}
-                />
-              </Grid>
+              <Fade in={clicked}>
+                <Grid
+                  container
+                  direction="column"
+                  justify="center"
+                  alignItems="center"
+                >
+                  <TextField
+                    InputProps={{
+                      className: classes.multilineColor,
+                      disableUnderline: true,
+                    }}
+                    className={classes.input}
+                    id="standard-basic"
+                    placeholder="Enter Task"
+                    size="small"
+                    autoComplete="off"
+                    onChange={(event) => {
+                      setTask(event.target.value);
+                    }}
+                  />
+                </Grid>
+              </Fade>
             </div>
           );
         } else if (sindex > -1) {
@@ -88,7 +92,7 @@ const Form = ({
                   value={editstr}
                   size="small"
                   onChange={(event) => {
-                    setEditstr(event.target.value)
+                    setEditstr(event.target.value);
                     setEdited(true);
                   }}
                 />

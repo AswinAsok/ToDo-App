@@ -7,6 +7,7 @@ import "./InputForm.css";
 import Divider from "@material-ui/core/Divider";
 import Form from "../Form/Form";
 import Display from "../Display/Display";
+import Fade from '@material-ui/core/Fade';
 
 const useStyles = makeStyles((theme) => ({
   buttonadd: {
@@ -33,10 +34,10 @@ const InputForm = () => {
   const [edit, setEdit] = useState(false);
   const [editstr, setEditstr] = useState("");
   const [edited, setEdited] = useState(false);
-
+  
 
   useEffect(() => {
-    var check = false
+    var check = false;
     if (localStorage.getItem("Todos") === null) {
       localStorage.setItem("Todos", JSON.stringify(Tasks_array));
       check = true;
@@ -47,12 +48,9 @@ const InputForm = () => {
       setTasks_array(JSON.parse(localStorage.getItem("Todos")));
     }
 
-    if(Tasks_array.length > 0){
+    if (Tasks_array.length > 0) {
       localStorage.setItem("Todos", JSON.stringify(Tasks_array));
     }
-
-   
-
   }, [Tasks_array, editstr]);
 
   const update = () => {
@@ -80,7 +78,14 @@ const InputForm = () => {
             variant="contained"
             className={classes.buttonadd}
           >
-            Add Task
+            {(() => {
+              if (edit) {
+                return ("Edit Task");
+              }
+              else{
+                return ("Add Task")
+              }
+            })()}
           </Button>
         </div>
       </Grid>
@@ -96,6 +101,7 @@ const InputForm = () => {
               editstr={editstr}
               setEditstr={setEditstr}
               setEdited={setEdited}
+              clicked={clicked}
             />
           );
         }
