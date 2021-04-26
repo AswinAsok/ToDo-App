@@ -9,7 +9,6 @@ const defaultProps = {
     m: 1,
     style: {
       width: "95%",
-      height: "40rem",
       marginTop: "1.5rem",
       marginBottom: "1rem",
       paddingBottom: "2rem"
