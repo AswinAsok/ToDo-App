@@ -30,8 +30,12 @@ const InputForm = () => {
   const [clicked, setClicked] = useState(false);
   const [Task, setTask] = useState("");
   const [Tasks_array, setTasks_array] = useState([]);
+  
   const [priority, setPriority] = useState([]);
+  const [tempri,setTempri] = useState("");
+
   const [sindex, setSIndex] = useState(-1);
+
   const [edit, setEdit] = useState(false);
   const [editstr, setEditstr] = useState("");
   const [edited, setEdited] = useState(false);
@@ -103,6 +107,11 @@ const InputForm = () => {
               setEditstr={setEditstr}
               setEdited={setEdited}
               clicked={clicked}
+              priority={priority}
+              setPriority={setPriority}
+
+              tempri={tempri}
+              setTempri={setTempri}
             />
           );
         }
@@ -111,6 +120,13 @@ const InputForm = () => {
           setTasks_array((Tasks_array) => Tasks_array.concat(Task));
           setTask("");
         }
+
+        if (!clicked && tempri.length > 0) {
+          setPriority((priority) => priority.concat(tempri));
+          setTempri("");
+        }
+
+        
 
         if (edit && sindex !== -1) {
           return (
@@ -123,6 +139,11 @@ const InputForm = () => {
               editstr={editstr}
               setEditstr={setEditstr}
               setEdited={setEdited}
+              priority={priority}
+              setPriority={setPriority}
+
+              tempri={tempri}
+              setTempri={setTempri}
             />
           );
         }
@@ -146,6 +167,8 @@ const InputForm = () => {
             setEditstr={setEditstr}
             edited={edited}
             setEdited={setEdited}
+
+            priority={priority}
           />
         );
       })}

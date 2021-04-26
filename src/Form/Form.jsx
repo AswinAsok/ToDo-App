@@ -48,6 +48,12 @@ const Form = ({
 
   setEdited,
   clicked,
+
+  priority, 
+  setPriority,
+
+  tempri,
+  setTempri
 }) => {
   const classes = useStyles();
 
@@ -84,10 +90,13 @@ const Form = ({
                     <Select
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
+                      onChange={(event) => {
+                      setTempri(event.target.value);
+                    }}
                     >
-                      <MenuItem value={10}>High</MenuItem>
-                      <MenuItem value={20}>Medium</MenuItem>
-                      <MenuItem value={30}>Low</MenuItem>
+                      <MenuItem value={"High"}>High</MenuItem>
+                      <MenuItem value={"Medium"}>Medium</MenuItem>
+                      <MenuItem value={"Low"}>Low</MenuItem>
                     </Select>
                   </FormControl>
                 </Grid>
