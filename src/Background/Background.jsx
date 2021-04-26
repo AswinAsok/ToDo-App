@@ -11,7 +11,8 @@ const defaultProps = {
       width: "95%",
       marginTop: "1.5rem",
       marginBottom: "1rem",
-      paddingBottom: "2rem"
+      paddingBottom: "2rem",
+      minHeight: "68vh",
     },
   };
   
