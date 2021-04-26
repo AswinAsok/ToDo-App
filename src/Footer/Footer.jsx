@@ -6,7 +6,7 @@ import './Footer.css'
 const defaultProps = {
     bgcolor: "background.paper",
     borderColor: "text.primary",
-    style: { width: "18rem", padding: "5px" },
+    style: { width: "19rem", padding: "5px" },
   };
 
 const Footer = () => {
@@ -14,9 +14,10 @@ const Footer = () => {
     <div>
       <div className="footer-container">
         <Grid container direction="column" justify="center" alignItems="center">
-          <Box borderRadius={9} {...defaultProps}>
+          <Box boxShadow={3} borderRadius={9} {...defaultProps}>
             <div className="footer-text">Made with React 🚀 By Aswin Asok</div>
             <a href="http://bio.fm/aswinasok"><div className="footer-text">Find me around the Web 🌎</div></a>
+            <a href="http://bio.fm/aswinasok"><div className="footer-text">Star 🌟 on GitHub</div></a>
           </Box>
         </Grid>
       </div>

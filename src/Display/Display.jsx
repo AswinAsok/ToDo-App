@@ -55,8 +55,6 @@ function Display({
 
   edited,
   setEdited,
-
-
 }) {
   const classes = useStyles();
 
@@ -73,9 +71,10 @@ function Display({
                 justify="center"
                 alignItems="center"
               >
-                <Box className="display-box" borderRadius={9} {...defaultProps}>
+                <Box boxShadow={3} className="display-box" borderRadius={9} {...defaultProps}>
                   <div className="box-elements">{Task}</div>
                 </Box>
+
                 <Grid
                   container
                   direction="row"
@@ -87,17 +86,17 @@ function Display({
                       variant="contained"
                       className={classes.buttondelete}
                       onClick={() => {
+                        if (!edit) {
+                          if (Tasks_array.length === 1) {
+                            localStorage.removeItem("Todos");
+                          }
 
-                        if(Tasks_array.length === 1){
-                          localStorage.removeItem("Todos")
+                          setTasks_array(
+                            Tasks_array.filter(function (task) {
+                              return task !== Tasks_array[index];
+                            })
+                          );
                         }
-
-                        setTasks_array(
-                          Tasks_array.filter(function (task) {
-                            return task !== Tasks_array[index];
-                          })
-                        );
-                        
                       }}
                     >
                       Delete

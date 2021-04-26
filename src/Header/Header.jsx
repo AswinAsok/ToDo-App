@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <div className="header-container">
       <Grid container direction="column" justify="center" alignItems="center">
-        <Box borderRadius={9} {...defaultProps}>
+        <Box boxShadow={3} borderRadius={9} {...defaultProps}>
           <div className="heading-text">Minimalistic ToDo App </div>
         </Box>
       </Grid>
