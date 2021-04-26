@@ -22,7 +22,7 @@ const defaultProps = {
         <Grid container direction="row" justify="center" alignItems="center">
           <Box boxShadow={3} borderRadius={16} {...defaultProps}>
             <InputForm />
-            
+
           </Box>
         </Grid>
       </div>
