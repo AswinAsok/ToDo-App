@@ -17,7 +17,7 @@ const Footer = () => {
           <Box boxShadow={3} borderRadius={9} {...defaultProps}>
             <div className="footer-text">Made with React 🚀 By Aswin Asok</div>
             <a href="http://bio.fm/aswinasok"><div className="footer-text">Find me around the Web 🌎</div></a>
-            <a href="http://bio.fm/aswinasok"><div className="footer-text">Star 🌟 on GitHub</div></a>
+            <a href="https://github.com/AswinAsok/ToDo-App"><div className="footer-text">Star 🌟 on GitHub</div></a>
           </Box>
         </Grid>
       </div>
