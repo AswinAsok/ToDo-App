@@ -57,6 +57,7 @@ function Display({
   setEdited,
 
   priority,
+  setPriority,
 }) {
   const classes = useStyles();
 
@@ -73,9 +74,16 @@ function Display({
                 justify="center"
                 alignItems="center"
               >
-                <Box boxShadow={3} className="display-box" borderRadius={9} {...defaultProps}>
-                <div className="box-elements">{Task}</div>
-                <div className="box-elements">Priority: {priority[index]}</div>
+                <Box
+                  boxShadow={3}
+                  className="display-box"
+                  borderRadius={9}
+                  {...defaultProps}
+                >
+                  <div className="box-elements">{Task}</div>
+                  <div className="box-elements">
+                    Priority: {priority[index]}
+                  </div>
                 </Box>
 
                 <Grid
@@ -92,11 +100,18 @@ function Display({
                         if (!edit) {
                           if (Tasks_array.length === 1) {
                             localStorage.removeItem("Todos");
+                            localStorage.removeItem("Priority");
                           }
 
                           setTasks_array(
                             Tasks_array.filter(function (task) {
                               return task !== Tasks_array[index];
+                            })
+                          );
+
+                          setPriority(
+                            priority.filter(function (pri) {
+                              return pri !== priority[index];
                             })
                           );
                         }

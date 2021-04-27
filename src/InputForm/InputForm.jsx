@@ -45,23 +45,25 @@ const InputForm = () => {
     var check = false;
     if (localStorage.getItem("Todos") === null) {
       localStorage.setItem("Todos", JSON.stringify(Tasks_array));
+      localStorage.setItem("Priority", JSON.stringify(priority));
       check = true;
     } else if (
       Tasks_array.length === 0 &&
       JSON.parse(localStorage.getItem("Todos")).length > 0
     ) {
       setTasks_array(JSON.parse(localStorage.getItem("Todos")));
+      setPriority(JSON.parse(localStorage.getItem("Priority")));
     }
 
     if (Tasks_array.length > 0) {
       localStorage.setItem("Todos", JSON.stringify(Tasks_array));
+      localStorage.setItem("Priority", JSON.stringify(priority));
     }
   }, [Tasks_array, editstr]);
 
   const update = () => {
     if (edited && edit && sindex !== -1 && editstr.length > 0) {
       Tasks_array[sindex] = editstr;
-      console.log("Hello123");
       setEditstr("");
       setEdit(false);
       setSIndex(-1);
@@ -116,7 +118,7 @@ const InputForm = () => {
           );
         }
 
-        if (!clicked && Task.length > 0) {
+        if (!clicked && Task.length > 0 && tempri.length > 0) {
           setTasks_array((Tasks_array) => Tasks_array.concat(Task));
           setTask("");
         }
@@ -169,6 +171,7 @@ const InputForm = () => {
             setEdited={setEdited}
 
             priority={priority}
+            setPriority={setPriority}
           />
         );
       })}
